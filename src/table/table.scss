@@ -1,0 +1,17 @@
+table {
+	margin: 2rem;
+	border-collapse: collapse;
+
+	tr {
+		border: solid 1px grey;
+
+		&:hover {
+			background-color: darkslategray;
+		}
+	}
+
+	td,
+	th {
+		padding: 0.2rem 1rem;
+	}
+}
