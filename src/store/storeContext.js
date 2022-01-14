@@ -9,42 +9,63 @@ export const useData = () => {
 };
 
 const friendsInitialValue = [
-	{
-		name: 'Nico',
-		items: [],
-	},
-	{
-		name: 'Nacho',
-		items: [],
-	},
-	{
-		name: 'Rodri',
-		items: [],
-	},
+	// {
+	// 	name: 'Nico',
+	// 	items: [],
+	// },
+	// {
+	// 	name: 'Nacho',
+	// 	items: [],
+	// },
+	// {
+	// 	name: 'Rodri',
+	// 	items: [],
+	// },
+];
+
+const itemsInitialValue = [
+	// {
+	// 	name: 'picada',
+	// 	cost: 320,
+	// },
+	// {
+	// 	name: 'bebidas',
+	// 	cost: 240,
+	// },
+	// {
+	// 	name: 'pizzas',
+	// 	cost: 600,
+	// },
 ];
 
 //Defining the wrapper
 export const DataProvider = ({ children }) => {
 	const [friends, setFriends] = useState(friendsInitialValue);
-	const [items, setItems] = useState(['picada', 'bebidas', 'pizzas']);
+	const [items, setItems] = useState(itemsInitialValue);
 
 	const addFriend = (newFriend) => {
 		setFriends([...friends, { name: newFriend, items: [] }]);
 	};
 
-	const addItem = (newItem) => {
-		setItems([...items, newItem]);
+	const addItem = (newItem, itemCost) => {
+		setItems([...items, { name: newItem, cost: parseFloat(itemCost) }]);
 	};
 
-	const editFriend = (friendName, item) => {
-		const tempFriends = friends.map((friend) => {
-			if (friend.name === friendName) {
-				friend.items.push(item);
+	const editFriend = (friend, item) => {
+		const tempFriends = friends;
+
+		tempFriends.map((currentFriend) => {
+			if (currentFriend === friend) {
+				if (currentFriend.items.indexOf(item) === -1) {
+					currentFriend.items.push(item);
+				} else {
+					currentFriend.items = currentFriend.items.filter(
+						(delItem) => item !== delItem
+					);
+				}
 			}
 		});
-
 		setFriends(tempFriends);
-		console.log(friends);
 	};
 
 	return (

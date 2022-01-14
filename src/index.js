@@ -3,15 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
-import { DataProvider } from './store/storeContext';
 
-ReactDOM.render(
-	<React.StrictMode>
-		<DataProvider>
-			<App />
-		</DataProvider>
-	</React.StrictMode>,
-	document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 reportWebVitals();

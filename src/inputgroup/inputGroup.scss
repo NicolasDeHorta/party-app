@@ -1,0 +1,34 @@
+@import '../core/mixins.scss';
+
+.inputGroup {
+	--fontSize: 1.1rem;
+	--inputHeight: 1.8rem;
+
+	input {
+		font-size: var(--fontSize);
+		width: 5rem;
+		border-radius: 0.5rem;
+		border: none;
+		padding: 0.3rem;
+		height: var(--inputHeight);
+		margin: 0 0.5rem;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.nameInput {
+		width: 15rem;
+	}
+}
+
+label {
+	width: 16rem;
+	display: inline-flex;
+	justify-content: flex-end;
+}
+
+.btn {
+	@include appButton();
+}
